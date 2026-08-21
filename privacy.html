@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PageNote — Privacy Policy</title>
+<link rel="stylesheet" href="_style.css">
+</head>
+<body>
+<main>
+
+<header>
+  <h1>PageNote Privacy Policy</h1>
+  <p class="meta">Last updated 21 August 2026 · <a href="#zh">中文版</a> · <a href="terms.html">Terms of Service</a></p>
+</header>
+
+<p>PageNote turns a PDF of lecture slides into page-by-page study notes, and matches a problem
+set against how far your course has got. This page describes exactly what leaves your device,
+where it goes, and what is kept.</p>
+
+<div class="note">
+<p><strong>The short version.</strong> Your notes, your handwriting and your PDFs stay on your
+device. When you ask for AI notes, that one page's text and image are relayed through our server
+to an AI provider and are <em>not</em> stored by us. We keep no account, run no analytics SDK
+in the app, show no ads, and do not track you across apps or websites. Our server does keep a
+usage record of <em>which feature ran</em> — never what was in it (see section 3).</p>
+</div>
+
+<h2>1. Who we are</h2>
+<p>PageNote is published by an individual developer. Contact:
+<a href="mailto:terrygao907@gmail.com">terrygao907@gmail.com</a>.</p>
+
+<h2>2. What stays on your device</h2>
+<ul>
+  <li>The PDFs you import, and every page image rendered from them</li>
+  <li>All generated notes, your own typed notes, and Apple Pencil handwriting</li>
+  <li>Problem sets, your answers, and your mistake book</li>
+  <li>Any API key you enter yourself, which is held in the iOS Keychain</li>
+</ul>
+<p>None of this is uploaded, backed up to us, or readable by us. Deleting the app deletes it.</p>
+
+<h2>3. What is sent, and where</h2>
+<table>
+<tr><th>Data</th><th>When</th><th>Where it goes</th><th>Kept?</th></tr>
+<tr>
+  <td>The text and image of the page you are generating notes for</td>
+  <td>Only when you tap Generate, and only after you have given consent in the app</td>
+  <td>Relayed through PageNote Cloud to the AI provider for your tier</td>
+  <td><strong>Not stored by us.</strong> Held only in memory for the length of the request</td>
+</tr>
+<tr>
+  <td>A random install identifier (a UUID generated on your device)</td>
+  <td>With every request to PageNote Cloud</td>
+  <td>PageNote Cloud</td>
+  <td>Yes — it is how free-trial usage is counted. Not linked to your name, email or Apple ID</td>
+</tr>
+<tr>
+  <td>A usage record: which feature you used, which AI model ran, how much quota it cost,
+      whether it succeeded, how long it took, and the Cloudflare data centre that served it —
+      keyed by a shortened hash of the install identifier</td>
+  <td>With every request to PageNote Cloud</td>
+  <td>PageNote Cloud (Cloudflare Analytics Engine)</td>
+  <td>Yes, for about 90 days. <strong>It contains no page text, no exercise questions and no
+      note content</strong> — only which feature ran and what it cost us. We use it to see
+      whether the subscription price covers the AI costs</td>
+</tr>
+<tr>
+  <td>A fingerprint (hash) of the document</td>
+  <td>With note requests</td>
+  <td>PageNote Cloud</td>
+  <td>Yes — so that regenerating a page in the same document does not consume trial quota twice.
+      It is a hash, and the document cannot be reconstructed from it</td>
+</tr>
+<tr>
+  <td>Your App Store subscription receipt</td>
+  <td>When you generate notes as a subscriber</td>
+  <td>PageNote Cloud, verified against Apple's public keys</td>
+  <td>Transaction identifiers only, to stop the same purchase being credited twice</td>
+</tr>
+<tr>
+  <td>Your IP address</td>
+  <td>Every network request, as with any website</td>
+  <td>PageNote Cloud (Cloudflare)</td>
+  <td>Used for a per-day request counter on the free path, to stop abuse. The counter expires
+      automatically and is not used to profile you</td>
+</tr>
+</table>
+
+<h3>If you use your own API key</h3>
+<p>When you choose a provider and enter your own key, requests go <strong>directly from your
+device to that provider</strong>. They do not pass through PageNote Cloud, and we never see the
+key or the content. Each provider is authorised separately in the app.</p>
+
+<h3>If you use the on-device model</h3>
+<p>Nothing leaves the device at all. No network request is made.</p>
+
+<h2>4. AI providers</h2>
+<p>Depending on your tier and settings, page content may be processed by Anthropic, OpenAI,
+Google, DeepSeek, Moonshot AI (Kimi), Alibaba (Qwen), Zhipu, or a custom endpoint you configure
+yourself. Their handling of that content is governed by their own terms. The app names the
+specific company before you consent, and you can withdraw consent at any time in Settings —
+sending stops immediately.</p>
+
+<h2>5. What we do not do</h2>
+<ul>
+  <li>No accounts, no sign-in, no password</li>
+  <li>No analytics, telemetry, crash-reporting or advertising SDKs in the app — nothing on your
+      device reports what you do. Our own server records which features were called and what they
+      cost (section 3); that record never contains your content</li>
+  <li>No tracking as defined by Apple's App Tracking Transparency — we do not link data to
+      third-party data for advertising, and we do not share data with data brokers</li>
+  <li>No selling of data, ever</li>
+  <li>No reading of your notes, handwriting or documents</li>
+</ul>
+
+<h2>6. Payments</h2>
+<p>Subscriptions are handled entirely by Apple. We never see your card details,
+billing address or Apple ID. We only receive the signed receipt that says which product is
+active.</p>
+
+<h2>7. Retention</h2>
+<p>Page content is never written to disk on our side. Quota records tied to an install
+identifier expire within twelve months. Usage records (section 3) are kept for about 90 days
+and then fall out of the analytics store automatically. You can clear the install identifier by
+deleting and reinstalling the app, which also ends any free-trial allowance attached to it.</p>
+
+<h2>8. Children</h2>
+<p>PageNote is intended for students in higher and senior secondary education and is not
+directed at children under 13. We do not knowingly collect personal information from children.</p>
+
+<h2>9. Your rights</h2>
+<p>Because we hold no account and no personal identifiers, there is normally nothing personal to
+export or erase. If you believe we hold data relating to you, email
+<a href="mailto:terrygao907@gmail.com">terrygao907@gmail.com</a> and we will respond within 30
+days. Depending on where you live you may have rights under the GDPR, the UK GDPR, the CCPA or
+the Australian Privacy Act.</p>
+
+<h2>10. Changes</h2>
+<p>If this policy changes materially, the updated date at the top will change and the new version
+will be published here before the change takes effect in the app.</p>
+
+<hr>
+
+<header id="zh">
+  <h1>PageNote 隐私政策</h1>
+  <p class="meta">最后更新 2026 年 8 月 21 日 · <a href="#">English</a> · <a href="terms.html">服务条款</a></p>
+</header>
+
+<p>PageNote 把一份 PDF 课件变成逐页的学习笔记，并把习题册按授课进度对到具体页上。
+这一页说清楚：什么东西会离开你的设备、去了哪儿、留没留下。</p>
+
+<div class="note">
+<p><strong>一句话版本。</strong>笔记、手写和 PDF 都留在你自己的设备上。点「生成」时，
+只有那一页的文字和图片会经我们的服务器转发给 AI 服务商，我们<em>不存</em>。
+没有账号，App 里不接任何分析 SDK，没有广告，不跨 App 或网站追踪你。
+我们的服务器会记「哪个功能被调用了」，但<em>不记里面是什么</em>（见第 3 节）。</p>
+</div>
+
+<h2>1. 我们是谁</h2>
+<p>PageNote 由个人开发者发布。联系方式：
+<a href="mailto:terrygao907@gmail.com">terrygao907@gmail.com</a>。</p>
+
+<h2>2. 只留在你设备上的</h2>
+<ul>
+  <li>你导入的 PDF，以及由它渲染出的每一页图片</li>
+  <li>全部生成的笔记、你自己敲的笔记、Apple Pencil 手写</li>
+  <li>习题册、你的作答、错题本</li>
+  <li>你自己填的 API Key，存在 iOS 钥匙串里</li>
+</ul>
+<p>这些都不会上传、不会备份到我们这里、我们也读不到。删掉 App 就一起删了。</p>
+
+<h2>3. 会发出去的，以及发去哪</h2>
+<table>
+<tr><th>数据</th><th>什么时候</th><th>去哪</th><th>存不存</th></tr>
+<tr>
+  <td>你正在生成笔记的那一页的文字和图片</td>
+  <td>只有你点「生成」时，且必须先在 App 里同意</td>
+  <td>经 PageNote 云端转发给你所在档位对应的 AI 服务商</td>
+  <td><strong>我们不存。</strong>只在请求期间存在于内存里</td>
+</tr>
+<tr>
+  <td>一个随机的安装标识（设备本地生成的 UUID）</td>
+  <td>每次请求 PageNote 云端时</td>
+  <td>PageNote 云端</td>
+  <td>存。免费试用额度靠它记账。不与你的姓名、邮箱或 Apple ID 关联</td>
+</tr>
+<tr>
+  <td>用量记录：用了哪个功能、由哪个模型生成、扣了多少额度、成没成功、耗时多久、
+      由哪个机房处理——按安装标识的短哈希分组</td>
+  <td>每次请求 PageNote 云端时</td>
+  <td>PageNote 云端（Cloudflare Analytics Engine）</td>
+  <td>存，约 90 天。<strong>其中没有任何页面文字、题目或笔记内容</strong>，
+      只有「跑了哪个功能、花了我们多少钱」。用途是确认订阅价格能不能覆盖 AI 成本</td>
+</tr>
+<tr>
+  <td>文档指纹（哈希）</td>
+  <td>随笔记请求</td>
+  <td>PageNote 云端</td>
+  <td>存。用来保证同一份文档重新生成某页不会重复扣试用额度。
+      它是哈希，还原不出文档内容</td>
+</tr>
+<tr>
+  <td>你的 App Store 订阅凭证</td>
+  <td>订阅用户生成笔记时</td>
+  <td>PageNote 云端，用 Apple 公钥验签</td>
+  <td>只存交易 ID，防止同一笔购买重复入账</td>
+</tr>
+<tr>
+  <td>你的 IP 地址</td>
+  <td>每次网络请求，和访问任何网站一样</td>
+  <td>PageNote 云端（Cloudflare）</td>
+  <td>用于免费通道的按日请求计数，防刷。计数自动过期，不用于给你画像</td>
+</tr>
+</table>
+
+<h3>如果你用自己的 API Key</h3>
+<p>选了服务商并填了自己的 Key，请求<strong>从你的设备直接发给那家服务商</strong>，
+不经过 PageNote 云端，我们既看不到 Key 也看不到内容。每家服务商在 App 里单独授权。</p>
+
+<h3>如果你用设备端模型</h3>
+<p>什么都不会离开设备，一个网络请求都不发。</p>
+
+<h2>4. AI 服务商</h2>
+<p>按你所在的档位和设置，页面内容可能由 Anthropic、OpenAI、Google、DeepSeek、
+月之暗面（Kimi）、阿里（通义千问）、智谱，或你自己配置的自定义端点处理。
+它们如何处理这些内容适用它们各自的条款。App 会在你同意之前点名具体是哪一家，
+你随时可以在设置里撤回——撤回后立即停止发送。</p>
+
+<h2>5. 我们不做的事</h2>
+<ul>
+  <li>没有账号、不用登录、没有密码</li>
+  <li>App 里不接任何分析、埋点、崩溃上报或广告 SDK——你设备上没有任何东西在上报你的行为。
+      我们自己的服务器会记录调用了哪些功能、花了多少成本（见第 3 节），那份记录里没有你的内容</li>
+  <li>不做 Apple ATT 定义的「追踪」——不把数据与第三方数据关联用于广告，不与数据经纪商共享</li>
+  <li>永不出售数据</li>
+  <li>不读你的笔记、手写和文档</li>
+</ul>
+
+<h2>6. 支付</h2>
+<p>订阅完全由 Apple 处理。我们看不到你的卡号、账单地址或 Apple ID，
+只收到那份说明「哪个产品有效」的签名凭证。</p>
+
+<h2>7. 保留期</h2>
+<p>页面内容在我们这边从不落盘。与安装标识关联的额度记录在 12 个月内过期。
+用量记录（见第 3 节）保留约 90 天，之后自动从统计库里滚出去。
+删掉 App 再重装可以清掉这个安装标识——挂在它上面的免费试用额度也会一并结束。</p>
+
+<h2>8. 儿童</h2>
+<p>PageNote 面向高等教育和高中阶段的学生，不面向 13 岁以下儿童，
+也不会有意收集儿童的个人信息。</p>
+
+<h2>9. 你的权利</h2>
+<p>因为我们没有账号、也没有个人标识符，通常没有属于你个人的数据可供导出或删除。
+如果你认为我们持有与你相关的数据，发邮件到
+<a href="mailto:terrygao907@gmail.com">terrygao907@gmail.com</a>，我们会在 30 天内回复。
+视你所在地区，你可能享有 GDPR、英国 GDPR、CCPA 或澳大利亚隐私法下的权利。</p>
+
+<h2>10. 变更</h2>
+<p>本政策若有实质变更，顶部的更新日期会随之变化，且新版本会在 App 内相应改动生效前
+先发布在这里。</p>
+
+<footer>PageNote · terrygao907@gmail.com</footer>
+
+</main>
+</body>
+</html>
