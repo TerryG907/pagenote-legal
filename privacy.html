@@ -87,19 +87,23 @@ usage record of <em>which feature ran</em> — never what was in it (see section
 </table>
 
 <h3>If you use your own API key</h3>
-<p>When you choose a provider and enter your own key, requests go <strong>directly from your
-device to that provider</strong>. They do not pass through PageNote Cloud, and we never see the
-key or the content. Each provider is authorised separately in the app.</p>
+<p><em>Not available in the current version.</em> If bring-your-own-key is offered in a future
+version, requests would go <strong>directly from your device to that provider</strong>, would not
+pass through PageNote Cloud, and we would never see the key or the content.</p>
 
 <h3>If you use the on-device model</h3>
-<p>Nothing leaves the device at all. No network request is made.</p>
+<p><em>Not available in the current version.</em> If an on-device model is offered in a future
+version, nothing would leave the device at all.</p>
 
 <h2>4. AI providers</h2>
-<p>Depending on your tier and settings, page content may be processed by Anthropic, OpenAI,
-Google, DeepSeek, Moonshot AI (Kimi), Alibaba (Qwen), Zhipu, or a custom endpoint you configure
-yourself. Their handling of that content is governed by their own terms. The app names the
-specific company before you consent, and you can withdraw consent at any time in Settings —
-sending stops immediately.</p>
+<p>Depending on your tier and the model you pick, page content may be processed by
+<strong>Zhipu, OpenAI, DeepSeek, or Anthropic</strong>. Their handling of that content is
+governed by their own terms. If a request cannot be served by your chosen model, it may be
+retried with the backup model you selected — that model's provider is named in the consent
+screen too.</p>
+<p>The app names the specific company before you consent, and asks again if you switch to a
+model from a provider you have not yet approved. You can withdraw consent at any time in
+Settings — sending stops immediately.</p>
 
 <h2>5. What we do not do</h2>
 <ul>
