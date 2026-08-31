@@ -96,9 +96,27 @@ pass through PageNote Cloud, and we would never see the key or the content.</p>
 version, nothing would leave the device at all.</p>
 
 <h2>4. AI providers</h2>
-<p>Depending on your tier and the model you pick, page content may be processed by
-<strong>Zhipu, OpenAI, DeepSeek, or Anthropic</strong>. Their handling of that content is
-governed by their own terms. If a request cannot be served by your chosen model, it may be
+<p>Depending on your tier and the model you pick, page content may be processed by one of
+these four companies, and no others:</p>
+<ul>
+  <li><strong>Anthropic</strong> (Claude models)</li>
+  <li><strong>OpenAI</strong> (GPT models)</li>
+  <li><strong>DeepSeek</strong></li>
+  <li><strong>Zhipu AI</strong> (GLM models)</li>
+</ul>
+<p>What is sent to them: the text of the one page you asked for notes on, and — only if the model
+you picked can read images — that page's rendered image. When you import a problem set, its text
+is sent as well. Nothing else: not your handwriting, not your own typed notes, not your other
+documents, not any identifier that names you.</p>
+<p><strong>We have confirmed that each of these four providers offers data protection equal to
+what this policy promises.</strong> All four are used through their paid API tiers, where the
+provider's own terms state that submitted content is <strong>not used to train their models</strong>
+and is retained only briefly for abuse monitoring before deletion (at most 30 days across the four,
+and zero-retention where the provider offers it). We do not use any provider that trains on API
+content. If a provider ever changed those terms, we would drop that provider rather than
+weaken this policy — the app's model list is served from our server, so a provider can be
+removed for everyone without an app update.</p>
+<p>If a request cannot be served by your chosen model, it may be
 retried with the backup model you selected — that model's provider is named in the consent
 screen too.</p>
 <p>The app names the specific company before you consent, and asks again if you switch to a
@@ -125,8 +143,12 @@ active.</p>
 <h2>7. Retention</h2>
 <p>Page content is never written to disk on our side. Quota records tied to an install
 identifier expire within twelve months. Usage records (section 3) are kept for about 90 days
-and then fall out of the analytics store automatically. You can clear the install identifier by
-deleting and reinstalling the app, which also ends any free-trial allowance attached to it.</p>
+and then fall out of the analytics store automatically. The install identifier is stored in the iOS Keychain, which means it
+<strong>survives deleting and reinstalling the app</strong> — that is deliberate, and it is the
+only thing that stops one device from claiming the free trial over and over. Erasing the device
+clears it. It is a random value, not derived from your device, your Apple ID, or anything about
+you, and we cannot use it to identify you. If you want the server-side records tied to it deleted,
+email us (section 9) and we will delete them.</p>
 
 <h2>8. Children</h2>
 <p>PageNote is intended for students in higher and senior secondary education and is not
@@ -225,9 +247,22 @@ will be published here before the change takes effect in the app.</p>
 <p>什么都不会离开设备，一个网络请求都不发。</p>
 
 <h2>4. AI 服务商</h2>
-<p>按你所在的档位和设置，页面内容可能由 Anthropic、OpenAI、Google、DeepSeek、
-月之暗面（Kimi）、阿里（通义千问）、智谱，或你自己配置的自定义端点处理。
-它们如何处理这些内容适用它们各自的条款。App 会在你同意之前点名具体是哪一家，
+<p>按你所在的档位和你选的模型，页面内容可能由下面**四家之一**处理，没有别家：</p>
+<ul>
+  <li><strong>Anthropic</strong>（Claude 系列）</li>
+  <li><strong>OpenAI</strong>（GPT 系列）</li>
+  <li><strong>DeepSeek</strong></li>
+  <li><strong>智谱 AI</strong>（GLM 系列）</li>
+</ul>
+<p>发出去的是什么：你点了生成的**那一页**的文字，以及——只有在你选的模型能看图时——那一页的
+渲染图。导入习题册时会再发一次习题册的文字。除此之外什么都不发：不发你的手写笔迹、
+不发你自己打的笔记、不发你其它的文档、不发任何能指认到你本人的标识。</p>
+<p><strong>我们已经确认这四家提供的数据保护不低于本政策的承诺。</strong>
+四家全部走各自的付费 API 通道，服务商条款明确写明提交的内容**不用于训练它们的模型**，
+只为滥用监测短暂留存后删除（四家里最长 30 天，能选零留存的就选零留存）。
+我们不使用任何会拿 API 内容训练的服务商。哪一家改了这些条款，我们会把那一家下架，
+而不是放宽这份政策——App 的模型表是从我们服务器下发的，撤掉一家不需要发新版本。</p>
+<p>App 会在你同意之前点名具体是哪一家，
 你随时可以在设置里撤回——撤回后立即停止发送。</p>
 
 <h2>5. 我们不做的事</h2>
@@ -247,7 +282,10 @@ will be published here before the change takes effect in the app.</p>
 <h2>7. 保留期</h2>
 <p>页面内容在我们这边从不落盘。与安装标识关联的额度记录在 12 个月内过期。
 用量记录（见第 3 节）保留约 90 天，之后自动从统计库里滚出去。
-删掉 App 再重装可以清掉这个安装标识——挂在它上面的免费试用额度也会一并结束。</p>
+这个安装标识存在 iOS 钥匙串里，也就是说它<strong>删掉 App 再重装依然存在</strong>——
+这是故意的，也是唯一挡得住同一台设备反复领免费试用的东西。抹掉设备会清掉它。
+它是一个随机值，不由你的设备、Apple ID 或任何和你有关的东西推导出来，我们也无法用它认出你是谁。
+想删掉服务端与它关联的记录，发邮件给我们（见第 9 节），我们会删。</p>
 
 <h2>8. 儿童</h2>
 <p>PageNote 面向高等教育和高中阶段的学生，不面向 13 岁以下儿童，
