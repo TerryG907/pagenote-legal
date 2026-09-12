@@ -11,7 +11,7 @@
 
 <header>
   <h1>PageNote Privacy Policy</h1>
-  <p class="meta">Last updated 21 August 2026 · <a href="#zh">中文版</a> · <a href="terms.html">Terms of Service</a></p>
+  <p class="meta">Last updated 12 September 2026 · <a href="#zh">中文版</a> · <a href="terms.html">Terms of Service</a></p>
 </header>
 
 <p>PageNote turns a PDF of lecture slides into page-by-page study notes, and matches a problem
@@ -21,7 +21,11 @@ where it goes, and what is kept.</p>
 <div class="note">
 <p><strong>The short version.</strong> Your notes, your handwriting and your PDFs stay on your
 device. When you ask for AI notes, that one page's text and image are relayed through our server
-to an AI provider and are <em>not</em> stored by us. We keep no account, run no analytics SDK
+to an AI provider and are <em>not</em> stored by us. The one exception is marking: if you tap
+<em>Mark it</em> on a problem you solved with Apple Pencil, that one problem's handwritten working
+is sent too, so the AI can see what you actually wrote. If you record a class, the audio stays on
+your device and is transcribed on the device; only if you switch on <em>class key points</em> is the
+<em>text</em> of what the lecturer just said relayed the same way — never the audio. We keep no account, run no analytics SDK
 in the app, show no ads, and do not track you across apps or websites. Our server does keep a
 usage record of <em>which feature ran</em> — never what was in it (see section 3).</p>
 </div>
@@ -33,8 +37,11 @@ usage record of <em>which feature ran</em> — never what was in it (see section
 <h2>2. What stays on your device</h2>
 <ul>
   <li>The PDFs you import, and every page image rendered from them</li>
-  <li>All generated notes, your own typed notes, and Apple Pencil handwriting</li>
+  <li>All generated notes, your own typed notes, and Apple Pencil handwriting — except the
+  working for a single problem at the moment you ask us to mark it (see section 3)</li>
   <li>Problem sets, your answers, and your mistake book</li>
+  <li>Class recordings (the audio), their transcripts and translations, and the times at which you
+  turned each page while recording</li>
   <li>Any API key you enter yourself, which is held in the iOS Keychain</li>
 </ul>
 <p>None of this is uploaded, backed up to us, or readable by us. Deleting the app deletes it.</p>
@@ -47,6 +54,19 @@ usage record of <em>which feature ran</em> — never what was in it (see section
   <td>Only when you tap Generate, and only after you have given consent in the app</td>
   <td>Relayed through PageNote Cloud to the AI provider for your tier</td>
   <td><strong>Not stored by us.</strong> Held only in memory for the length of the request</td>
+</tr>
+<tr>
+  <td>While you record a class with <em>class key points</em> switched on: the text transcript of
+      roughly the last one to two minutes of what the lecturer said, the text of the slide you are on,
+      the headings already in that page's notes, and a short running summary of the class that the AI
+      itself wrote in the previous round. <strong>Never the audio.</strong> After class, a page's
+      transcript text is sent again only when you ask for that page or that class to be summarised,
+      or ask for a page to be regenerated with what the lecturer said</td>
+  <td>Class key points are off until you switch them on, and the switch names the AI provider.
+      Recording, captions and translation work without them and send nothing</td>
+  <td>Relayed through PageNote Cloud to the AI provider for your tier, exactly like note requests</td>
+  <td><strong>Not stored by us.</strong> Held only in memory for the length of the request. The
+      recording and its transcript stay on your device</td>
 </tr>
 <tr>
   <td>A random install identifier (a UUID generated on your device)</td>
@@ -91,9 +111,11 @@ usage record of <em>which feature ran</em> — never what was in it (see section
 version, requests would go <strong>directly from your device to that provider</strong>, would not
 pass through PageNote Cloud, and we would never see the key or the content.</p>
 
-<h3>If you use the on-device model</h3>
-<p><em>Not available in the current version.</em> If an on-device model is offered in a future
-version, nothing would leave the device at all.</p>
+<h3>What runs on the device</h3>
+<p>Speech recognition and translation of a class recording always run on the device, using iOS
+system frameworks; the audio is not sent to us or to any AI provider. On iPads where Apple's
+on-device model is available, class key points and after-class summaries may be produced entirely
+on the device as well, in which case nothing leaves it for those features.</p>
 
 <h2>4. AI providers</h2>
 <p>Depending on your tier and the model you pick, page content may be processed by one of
@@ -106,8 +128,22 @@ these four companies, and no others:</p>
 </ul>
 <p>What is sent to them: the text of the one page you asked for notes on, and — only if the model
 you picked can read images — that page's rendered image. When you import a problem set, its text
-is sent as well. Nothing else: not your handwriting, not your own typed notes, not your other
-documents, not any identifier that names you.</p>
+is sent as well. When you tap <strong>Mark it</strong> on a problem, an image of that one problem's
+handwritten working is sent so the AI can mark it — only that problem, only when you tap the button,
+and never automatically. Nothing else: not your other handwriting, not your own typed notes,
+not your other documents, not any identifier that names you.</p>
+<p>If you switch on <strong>class key points</strong> while recording a class, the text of what the
+lecturer said in roughly the last one to two minutes is sent as well, together with the text of the
+slide you are on and the headings already in that page's notes, so the AI can write down what the
+lecturer added beyond the slide. The audio itself is never sent, and neither are your own notes or
+handwriting. The same text is sent after class only when you ask for a summary of that page or that
+class.</p>
+<p><strong>If your App Store account is in mainland China</strong>, requests do not go through
+Cloudflare. They go to a server we operate ourselves in Hangzhou (Alibaba Cloud) at
+<code>api.pagenote.com.cn</code>, and from there only to DeepSeek and Zhipu AI — the requests
+stay inside mainland China. That server relays and meters exactly as described above; it keeps
+no page content, and it writes no usage-analytics record. The same routing applies to class
+transcripts.</p>
 <p><strong>We have confirmed that each of these four providers offers data protection equal to
 what this policy promises.</strong> All four are used through their paid API tiers, where the
 provider's own terms state that submitted content is <strong>not used to train their models</strong>
@@ -141,7 +177,9 @@ billing address or Apple ID. We only receive the signed receipt that says which 
 active.</p>
 
 <h2>7. Retention</h2>
-<p>Page content is never written to disk on our side. Quota records tied to an install
+<p>Page content and class transcripts are never written to disk on our side. Recordings, transcripts
+and translations are stored only on your device, inside the document they belong to; deleting the
+recording or the document deletes them. Quota records tied to an install
 identifier expire within twelve months. Usage records (section 3) are kept for about 90 days
 and then fall out of the analytics store automatically. The install identifier is stored in the iOS Keychain, which means it
 <strong>survives deleting and reinstalling the app</strong> — that is deliberate, and it is the
@@ -169,7 +207,7 @@ will be published here before the change takes effect in the app.</p>
 
 <header id="zh">
   <h1>PageNote 隐私政策</h1>
-  <p class="meta">最后更新 2026 年 8 月 21 日 · <a href="#">English</a> · <a href="terms.html">服务条款</a></p>
+  <p class="meta">最后更新 2026 年 9 月 12 日 · <a href="#">English</a> · <a href="terms.html">服务条款</a></p>
 </header>
 
 <p>PageNote 把一份 PDF 课件变成逐页的学习笔记，并把习题册按授课进度对到具体页上。
@@ -178,6 +216,10 @@ will be published here before the change takes effect in the app.</p>
 <div class="note">
 <p><strong>一句话版本。</strong>笔记、手写和 PDF 都留在你自己的设备上。点「生成」时，
 只有那一页的文字和图片会经我们的服务器转发给 AI 服务商，我们<em>不存</em>。
+只有一个例外：你在某道题上点了「批改」，那一道题的手写作答会一起发出去——
+不然 AI 看不见你到底写了什么。
+录课的话，录音留在你设备上、在设备上转成文字；只有你打开「课堂要点」，老师刚说的那段<em>文字</em>
+才会同样经我们转发——录音本身永远不发。
 没有账号，App 里不接任何分析 SDK，没有广告，不跨 App 或网站追踪你。
 我们的服务器会记「哪个功能被调用了」，但<em>不记里面是什么</em>（见第 3 节）。</p>
 </div>
@@ -189,8 +231,10 @@ will be published here before the change takes effect in the app.</p>
 <h2>2. 只留在你设备上的</h2>
 <ul>
   <li>你导入的 PDF，以及由它渲染出的每一页图片</li>
-  <li>全部生成的笔记、你自己敲的笔记、Apple Pencil 手写</li>
+  <li>全部生成的笔记、你自己敲的笔记、Apple Pencil 手写——只有你点「批改」的那一道题的
+  手写作答例外（见第 3 节）</li>
   <li>习题册、你的作答、错题本</li>
+  <li>课堂录音（音频）、它的转写和翻译、以及录音时你每次翻页的时刻</li>
   <li>你自己填的 API Key，存在 iOS 钥匙串里</li>
 </ul>
 <p>这些都不会上传、不会备份到我们这里、我们也读不到。删掉 App 就一起删了。</p>
@@ -203,6 +247,16 @@ will be published here before the change takes effect in the app.</p>
   <td>只有你点「生成」时，且必须先在 App 里同意</td>
   <td>经 PageNote 云端转发给你所在档位对应的 AI 服务商</td>
   <td><strong>我们不存。</strong>只在请求期间存在于内存里</td>
+</tr>
+<tr>
+  <td>录课且打开了「课堂要点」时：老师最近一两分钟说的话的转写文字、你正停在的那页课件的文字、
+      这页笔记里已经写着的小标题，以及 AI 自己上一轮写的一小段「这节课讲到哪了」。
+      <strong>永远不发录音。</strong>下课之后，只有你点「整理这页 / 整理这节课」或
+      「结合课堂重新生成」时，那几页的转写文字才会再发一次</td>
+  <td>「课堂要点」默认关着，要你自己打开，打开时会点名 AI 服务商。录音、字幕、翻译不依赖它，
+      也什么都不发</td>
+  <td>经 PageNote 云端转发给你所在档位对应的 AI 服务商，和笔记请求完全一样</td>
+  <td><strong>我们不存。</strong>只在请求期间存在于内存里。录音和转写都留在你设备上</td>
 </tr>
 <tr>
   <td>一个随机的安装标识（设备本地生成的 UUID）</td>
@@ -243,8 +297,10 @@ will be published here before the change takes effect in the app.</p>
 <p>选了服务商并填了自己的 Key，请求<strong>从你的设备直接发给那家服务商</strong>，
 不经过 PageNote 云端，我们既看不到 Key 也看不到内容。每家服务商在 App 里单独授权。</p>
 
-<h3>如果你用设备端模型</h3>
-<p>什么都不会离开设备，一个网络请求都不发。</p>
+<h3>哪些在设备上跑</h3>
+<p>课堂录音的语音识别和翻译一律在设备上跑，用的是 iOS 系统框架；录音不会发给我们，
+也不会发给任何 AI 服务商。在支持苹果设备端模型的 iPad 上，课堂要点和课后整理也可能完全在
+设备上生成——那时这些功能一个字都不会离开设备。</p>
 
 <h2>4. AI 服务商</h2>
 <p>按你所在的档位和你选的模型，页面内容可能由下面**四家之一**处理，没有别家：</p>
@@ -255,8 +311,18 @@ will be published here before the change takes effect in the app.</p>
   <li><strong>智谱 AI</strong>（GLM 系列）</li>
 </ul>
 <p>发出去的是什么：你点了生成的**那一页**的文字，以及——只有在你选的模型能看图时——那一页的
-渲染图。导入习题册时会再发一次习题册的文字。除此之外什么都不发：不发你的手写笔迹、
-不发你自己打的笔记、不发你其它的文档、不发任何能指认到你本人的标识。</p>
+渲染图。导入习题册时会再发一次习题册的文字。你在某道题上点「**批改**」时，会发出那一道题的
+手写作答图片，好让 AI 看见你怎么写的——只发那一道，只在你按下按钮时发，绝不自动发。
+除此之外什么都不发：不发你其它的手写笔迹、不发你自己打的笔记、不发你其它的文档、
+不发任何能指认到你本人的标识。</p>
+<p>录课时如果你打开了「<strong>课堂要点</strong>」，老师最近一两分钟说的话的文字也会发出去，
+连同你正停在的那页课件的文字和这页笔记里已有的小标题，好让 AI 记下老师比课件多讲的东西。
+录音本身永远不发，你自己的笔记和手写也不发。下课之后只有你点整理这页或这节课时，
+这些文字才会再发一次。</p>
+<p><strong>如果你的 App Store 账号在中国大陆</strong>，请求不走 Cloudflare，而是走我们自己
+在杭州运营的一台服务器（阿里云，<code>api.pagenote.com.cn</code>），并且只转给 DeepSeek
+和智谱 AI——请求全程留在中国大陆境内。那台服务器同样只做转发和计量，不保存页面内容，
+也不写用量统计记录。课堂转写的文字走同一条路。</p>
 <p><strong>我们已经确认这四家提供的数据保护不低于本政策的承诺。</strong>
 四家全部走各自的付费 API 通道，服务商条款明确写明提交的内容**不用于训练它们的模型**，
 只为滥用监测短暂留存后删除（四家里最长 30 天，能选零留存的就选零留存）。
@@ -280,7 +346,8 @@ will be published here before the change takes effect in the app.</p>
 只收到那份说明「哪个产品有效」的签名凭证。</p>
 
 <h2>7. 保留期</h2>
-<p>页面内容在我们这边从不落盘。与安装标识关联的额度记录在 12 个月内过期。
+<p>页面内容和课堂转写在我们这边从不落盘。录音、转写和翻译只存在你设备上、放在它所属的
+那份文档里；删掉那条录音或那份文档就一起删了。与安装标识关联的额度记录在 12 个月内过期。
 用量记录（见第 3 节）保留约 90 天，之后自动从统计库里滚出去。
 这个安装标识存在 iOS 钥匙串里，也就是说它<strong>删掉 App 再重装依然存在</strong>——
 这是故意的，也是唯一挡得住同一台设备反复领免费试用的东西。抹掉设备会清掉它。
