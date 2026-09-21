@@ -11,7 +11,7 @@
 
 <header>
   <h1>PageNote Privacy Policy</h1>
-  <p class="meta">Last updated 12 September 2026 · <a href="#zh">中文版</a> · <a href="terms.html">Terms of Service</a></p>
+  <p class="meta">Last updated 21 September 2026 · <a href="#zh">中文版</a> · <a href="terms.html">Terms of Service</a></p>
 </header>
 
 <p>PageNote turns a PDF of lecture slides into page-by-page study notes, and matches a problem
@@ -21,12 +21,15 @@ where it goes, and what is kept.</p>
 <div class="note">
 <p><strong>The short version.</strong> Your notes, your handwriting and your PDFs stay on your
 device. When you ask for AI notes, that one page's text and image are relayed through our server
-to an AI provider and are <em>not</em> stored by us. The one exception is marking: if you tap
+to an AI provider and are <em>not</em> stored by us. Background course generation has a separate,
+opt-in temporary-storage process described below. For marking, if you tap
 <em>Mark it</em> on a problem you solved with Apple Pencil, that one problem's handwritten working
 is sent too, so the AI can see what you actually wrote. If you record a class, the audio stays on
 your device and is transcribed on the device; only if you switch on <em>class key points</em> is the
 <em>text</em> of what the lecturer just said relayed the same way — never the audio. We keep no account, run no analytics SDK
-in the app, show no ads, and do not track you across apps or websites. Our server does keep a
+in the app, show no ads, and do not track you across apps or websites. Learning features (practice
+built from your slides, a video transcript or a topic you type) send only the text you select, each
+behind its own consent, and are listed in section 3. Our server does keep a
 usage record of <em>which feature ran</em> — never what was in it (see section 3).</p>
 </div>
 
@@ -47,6 +50,20 @@ usage record of <em>which feature ran</em> — never what was in it (see section
 <p>None of this is uploaded, backed up to us, or readable by us. Deleting the app deletes it.</p>
 
 <h2>3. What is sent, and where</h2>
+<h3>Background course generation</h3>
+<p>If you approve background generation, the selected readable course text, page numbers,
+learning concepts and generated practice are temporarily stored by PageNote so the task can
+continue while your app is closed. Your complete PDF file, recordings, handwriting and personal
+notes are not uploaded by this feature. Each task is linked to your verified subscription identifier
+or an explicitly authorized test installation, so other users cannot retrieve it. We do not store
+your signed purchase receipt in the task. Content is deleted after a successful sync, when you
+stop the task and delete its cloud copy, or automatically within seven days of task creation.
+If you request deletion while a step is running, that step must finish before the task can be
+deleted. An expired task stops processing. Quota records remain separate and contain no course
+text. The selected AI provider receives the necessary text to generate the practice; its retention
+practices are described in the provider section below. Mainland and global services keep their
+queues separate. This storage is used to provide the feature, not for advertising or model training.</p>
+
 <table>
 <tr><th>Data</th><th>When</th><th>Where it goes</th><th>Kept?</th></tr>
 <tr>
@@ -67,6 +84,41 @@ usage record of <em>which feature ran</em> — never what was in it (see section
   <td>Relayed through PageNote Cloud to the AI provider for your tier, exactly like note requests</td>
   <td><strong>Not stored by us.</strong> Held only in memory for the length of the request. The
       recording and its transcript stay on your device</td>
+</tr>
+<tr>
+  <td><em>Learning · practice from your course material:</em> the readable text of the pages you
+      select (up to eight pages per batch), their page numbers, the subject and the concepts you
+      confirmed. Not the PDF file, not your handwriting or notes</td>
+  <td>Only when you tap Generate in Learning, after a separate consent that names the provider</td>
+  <td>Relayed through PageNote Cloud to the AI provider you picked</td>
+  <td><strong>Not stored by us</strong> when generated in the foreground. If you choose
+      <em>background generation</em>, see the row below</td>
+</tr>
+<tr>
+  <td><em>Learning · practice from a video:</em> the subtitle or transcript text you paste or import,
+      segment numbers, the subject and the concepts you confirmed. Not the video link or file. If you
+      tap <em>fetch public captions</em>, your device downloads them directly from that course's
+      website (currently CS50) without going through us</td>
+  <td>Only when you tap Generate, after a separate consent</td>
+  <td>Relayed through PageNote Cloud to the AI provider you picked</td>
+  <td><strong>Not stored by us</strong></td>
+</tr>
+<tr>
+  <td><em>Learning · a topic you choose:</em> the topic, goal, level and explanation language you
+      typed</td>
+  <td>Only when you ask for a learning route, after a separate consent</td>
+  <td>Relayed through PageNote Cloud to the AI provider you picked</td>
+  <td><strong>Not stored by us</strong></td>
+</tr>
+<tr>
+  <td><em>Learning · background generation:</em> the selected course text, page numbers, concepts
+      and the practice generated from them (details above this table)</td>
+  <td>Only after you approve background generation for that provider</td>
+  <td>PageNote Cloud (Cloudflare, or our Hangzhou server for mainland accounts), then to the AI
+      provider step by step</td>
+  <td><strong>Yes, temporarily:</strong> keyed by your subscription's transaction identifier (or the
+      install identifier on a test installation), deleted after a successful sync, when you stop the
+      task, or at most seven days after creation</td>
 </tr>
 <tr>
   <td>A random install identifier (a UUID generated on your device)</td>
@@ -138,12 +190,15 @@ slide you are on and the headings already in that page's notes, so the AI can wr
 lecturer added beyond the slide. The audio itself is never sent, and neither are your own notes or
 handwriting. The same text is sent after class only when you ask for a summary of that page or that
 class.</p>
+<p>Learning features send the inputs listed in section 3: the course text you selected, the subtitle
+or transcript text you provided, or the topic you typed — each only after you have approved that
+feature for the provider it names.</p>
 <p><strong>If your App Store account is in mainland China</strong>, requests do not go through
 Cloudflare. They go to a server we operate ourselves in Hangzhou (Alibaba Cloud) at
 <code>api.pagenote.com.cn</code>, and from there only to DeepSeek and Zhipu AI — the requests
 stay inside mainland China. That server relays and meters exactly as described above; it keeps
-no page content, and it writes no usage-analytics record. The same routing applies to class
-transcripts.</p>
+no page content other than background generation tasks (section 3, up to seven days), and it
+writes no usage-analytics record. The same routing applies to class transcripts.</p>
 <p><strong>We have confirmed that each of these four providers offers data protection equal to
 what this policy promises.</strong> All four are used through their paid API tiers, where the
 provider's own terms state that submitted content is <strong>not used to train their models</strong>
@@ -157,7 +212,9 @@ retried with the backup model you selected — that model's provider is named in
 screen too.</p>
 <p>The app names the specific company before you consent, and asks again if you switch to a
 model from a provider you have not yet approved. You can withdraw consent at any time in
-Settings — sending stops immediately.</p>
+Settings, or for learning features from the <em>More</em> menu at the top right of Learning —
+this device stops sending immediately. A background generation task already uploaded keeps its
+cloud copy until you stop it in the course, or it expires.</p>
 
 <h2>5. What we do not do</h2>
 <ul>
@@ -177,7 +234,9 @@ billing address or Apple ID. We only receive the signed receipt that says which 
 active.</p>
 
 <h2>7. Retention</h2>
-<p>Page content and class transcripts are never written to disk on our side. Recordings, transcripts
+<p>Page content and class transcripts are never written to disk on our side, with one exception:
+background course generation tasks you approve are stored for at most seven days, as described in
+section 3, and you can delete them yourself from the course at any time. Recordings, transcripts
 and translations are stored only on your device, inside the document they belong to; deleting the
 recording or the document deletes them. Quota records tied to an install
 identifier expire within twelve months. Usage records (section 3) are kept for about 90 days
@@ -194,7 +253,9 @@ directed at children under 13. We do not knowingly collect personal information 
 
 <h2>9. Your rights</h2>
 <p>Because we hold no account and no personal identifiers, there is normally nothing personal to
-export or erase. If you believe we hold data relating to you, email
+export or erase. The one place we hold your content is a background generation task you approved,
+for at most seven days; you can delete it yourself in the app (<em>Stop task and delete cloud
+copy</em>). If you believe we hold other data relating to you, email
 <a href="mailto:terrygao907@gmail.com">terrygao907@gmail.com</a> and we will respond within 30
 days. Depending on where you live you may have rights under the GDPR, the UK GDPR, the CCPA or
 the Australian Privacy Act.</p>
@@ -207,7 +268,7 @@ will be published here before the change takes effect in the app.</p>
 
 <header id="zh">
   <h1>PageNote 隐私政策</h1>
-  <p class="meta">最后更新 2026 年 9 月 12 日 · <a href="#">English</a> · <a href="terms.html">服务条款</a></p>
+  <p class="meta">最后更新 2026 年 9 月 21 日 · <a href="#">English</a> · <a href="terms.html">服务条款</a></p>
 </header>
 
 <p>PageNote 把一份 PDF 课件变成逐页的学习笔记，并把习题册按授课进度对到具体页上。
@@ -216,10 +277,11 @@ will be published here before the change takes effect in the app.</p>
 <div class="note">
 <p><strong>一句话版本。</strong>笔记、手写和 PDF 都留在你自己的设备上。点「生成」时，
 只有那一页的文字和图片会经我们的服务器转发给 AI 服务商，我们<em>不存</em>。
-只有一个例外：你在某道题上点了「批改」，那一道题的手写作答会一起发出去——
+后台课件生成另有需要主动同意的临时存储流程，见下文。你在某道题上点了「批改」时，那一道题的手写作答会一起发出去——
 不然 AI 看不见你到底写了什么。
 录课的话，录音留在你设备上、在设备上转成文字；只有你打开「课堂要点」，老师刚说的那段<em>文字</em>
 才会同样经我们转发——录音本身永远不发。
+学习功能（用你的课件、视频字幕或你输入的主题出练习）只发你选中的那些文字，每一项单独征求同意，见第 3 节。
 没有账号，App 里不接任何分析 SDK，没有广告，不跨 App 或网站追踪你。
 我们的服务器会记「哪个功能被调用了」，但<em>不记里面是什么</em>（见第 3 节）。</p>
 </div>
@@ -240,6 +302,15 @@ will be published here before the change takes effect in the app.</p>
 <p>这些都不会上传、不会备份到我们这里、我们也读不到。删掉 App 就一起删了。</p>
 
 <h2>3. 会发出去的，以及发去哪</h2>
+<h3>后台课件生成</h3>
+<p>你同意后台生成后，PageNote 会暂存所选课件的可读文字、页码、知识点和生成的练习，
+让任务能在 App 关闭后继续。此功能不会上传完整 PDF 文件、录音、手写或个人笔记。
+任务关联到通过验证的订阅标识或明确授权的测试安装标识，其他用户无法读取；任务中不保存签名购买凭证。
+内容会在成功同步后删除；你也可以停止任务并删除云端副本；未同步的任务会在创建后最多 7 天自动清理并停止。
+若当前步骤正在处理，需等该步骤结束后才能删除任务。额度账本与内容分开，不包含课件文字。
+所选 AI 服务商会收到生成练习所需的文字，其保留规则见下方服务商说明。
+大陆和全球服务的任务队列相互独立。这些暂存内容用于提供功能，不用于广告或训练模型。</p>
+
 <table>
 <tr><th>数据</th><th>什么时候</th><th>去哪</th><th>存不存</th></tr>
 <tr>
@@ -257,6 +328,32 @@ will be published here before the change takes effect in the app.</p>
       也什么都不发</td>
   <td>经 PageNote 云端转发给你所在档位对应的 AI 服务商，和笔记请求完全一样</td>
   <td><strong>我们不存。</strong>只在请求期间存在于内存里。录音和转写都留在你设备上</td>
+</tr>
+<tr>
+  <td><em>学习 · 用课件出题：</em>你选中的那些页的可读文字（每批最多 8 页）、页码、学科和你确认过的知识点。
+      不发 PDF 文件本身，不发手写和笔记</td>
+  <td>只在你在学习页点「生成」时，且要先单独同意、同意页会点名服务商</td>
+  <td>经 PageNote 云端转发给你选的 AI 服务商</td>
+  <td><strong>前台生成时我们不存。</strong>选了<em>后台生成</em>的见下一行</td>
+</tr>
+<tr>
+  <td><em>学习 · 用视频出题：</em>你粘贴或导入的字幕、讲稿文字，片段编号、学科和你确认过的知识点。
+      不发视频链接和视频文件。如果你点「读取公开字幕」，字幕由你的设备直接从那门课的网站（目前是 CS50）下载，不经过我们</td>
+  <td>只在你点「生成」时，且要先单独同意</td>
+  <td>经 PageNote 云端转发给你选的 AI 服务商</td>
+  <td><strong>我们不存</strong></td>
+</tr>
+<tr>
+  <td><em>学习 · 自选主题：</em>你输入的主题、目标、基础和讲解语言</td>
+  <td>只在你要求生成学习路线时，且要先单独同意</td>
+  <td>经 PageNote 云端转发给你选的 AI 服务商</td>
+  <td><strong>我们不存</strong></td>
+</tr>
+<tr>
+  <td><em>学习 · 后台生成：</em>所选课件的文字、页码、知识点和由此生成的练习（详见表格上方）</td>
+  <td>只在你为那家服务商同意了后台生成之后</td>
+  <td>PageNote 云端（Cloudflare；大陆账号是我们的杭州服务器），再逐步发给 AI 服务商</td>
+  <td><strong>暂存：</strong>以你订阅的交易标识（测试安装则用安装标识）为键，同步完成、你停止任务、或创建后最多 7 天即删除</td>
 </tr>
 <tr>
   <td>一个随机的安装标识（设备本地生成的 UUID）</td>
@@ -294,8 +391,8 @@ will be published here before the change takes effect in the app.</p>
 </table>
 
 <h3>如果你用自己的 API Key</h3>
-<p>选了服务商并填了自己的 Key，请求<strong>从你的设备直接发给那家服务商</strong>，
-不经过 PageNote 云端，我们既看不到 Key 也看不到内容。每家服务商在 App 里单独授权。</p>
+<p><em>当前版本不提供。</em>将来如果开放自带 Key，请求会<strong>从你的设备直接发给那家服务商</strong>，
+不经过 PageNote 云端，我们既看不到 Key 也看不到内容。</p>
 
 <h3>哪些在设备上跑</h3>
 <p>课堂录音的语音识别和翻译一律在设备上跑，用的是 iOS 系统框架；录音不会发给我们，
@@ -303,15 +400,15 @@ will be published here before the change takes effect in the app.</p>
 设备上生成——那时这些功能一个字都不会离开设备。</p>
 
 <h2>4. AI 服务商</h2>
-<p>按你所在的档位和你选的模型，页面内容可能由下面**四家之一**处理，没有别家：</p>
+<p>按你所在的档位和你选的模型，页面内容可能由下面<strong>四家之一</strong>处理，没有别家：</p>
 <ul>
   <li><strong>Anthropic</strong>（Claude 系列）</li>
   <li><strong>OpenAI</strong>（GPT 系列）</li>
   <li><strong>DeepSeek</strong></li>
   <li><strong>智谱 AI</strong>（GLM 系列）</li>
 </ul>
-<p>发出去的是什么：你点了生成的**那一页**的文字，以及——只有在你选的模型能看图时——那一页的
-渲染图。导入习题册时会再发一次习题册的文字。你在某道题上点「**批改**」时，会发出那一道题的
+<p>发出去的是什么：你点了生成的<strong>那一页</strong>的文字，以及——只有在你选的模型能看图时——那一页的
+渲染图。导入习题册时会再发一次习题册的文字。你在某道题上点「<strong>批改</strong>」时，会发出那一道题的
 手写作答图片，好让 AI 看见你怎么写的——只发那一道，只在你按下按钮时发，绝不自动发。
 除此之外什么都不发：不发你其它的手写笔迹、不发你自己打的笔记、不发你其它的文档、
 不发任何能指认到你本人的标识。</p>
@@ -319,17 +416,20 @@ will be published here before the change takes effect in the app.</p>
 连同你正停在的那页课件的文字和这页笔记里已有的小标题，好让 AI 记下老师比课件多讲的东西。
 录音本身永远不发，你自己的笔记和手写也不发。下课之后只有你点整理这页或这节课时，
 这些文字才会再发一次。</p>
+<p>学习功能发出去的就是第 3 节表里列的那些：你选中的课件文字、你提供的字幕或讲稿文字、或你输入的主题——
+每一项都要你先为它点名的那家服务商同意过。</p>
 <p><strong>如果你的 App Store 账号在中国大陆</strong>，请求不走 Cloudflare，而是走我们自己
 在杭州运营的一台服务器（阿里云，<code>api.pagenote.com.cn</code>），并且只转给 DeepSeek
-和智谱 AI——请求全程留在中国大陆境内。那台服务器同样只做转发和计量，不保存页面内容，
+和智谱 AI——请求全程留在中国大陆境内。那台服务器同样只做转发和计量，除后台生成任务（见第 3 节，最多 7 天）外不保存页面内容，
 也不写用量统计记录。课堂转写的文字走同一条路。</p>
 <p><strong>我们已经确认这四家提供的数据保护不低于本政策的承诺。</strong>
-四家全部走各自的付费 API 通道，服务商条款明确写明提交的内容**不用于训练它们的模型**，
+四家全部走各自的付费 API 通道，服务商条款明确写明提交的内容<strong>不用于训练它们的模型</strong>，
 只为滥用监测短暂留存后删除（四家里最长 30 天，能选零留存的就选零留存）。
 我们不使用任何会拿 API 内容训练的服务商。哪一家改了这些条款，我们会把那一家下架，
 而不是放宽这份政策——App 的模型表是从我们服务器下发的，撤掉一家不需要发新版本。</p>
-<p>App 会在你同意之前点名具体是哪一家，
-你随时可以在设置里撤回——撤回后立即停止发送。</p>
+<p>App 会在你同意之前点名具体是哪一家，换到没同意过的服务商时会再问一次。
+你随时可以在设置里撤回，学习功能也可以在学习页右上角「更多」菜单里撤回——这台设备会立即停止发送。
+已经上传到云端的后台生成任务，要在课程里停止它或等它过期，云端副本才会删除。</p>
 
 <h2>5. 我们不做的事</h2>
 <ul>
@@ -346,7 +446,8 @@ will be published here before the change takes effect in the app.</p>
 只收到那份说明「哪个产品有效」的签名凭证。</p>
 
 <h2>7. 保留期</h2>
-<p>页面内容和课堂转写在我们这边从不落盘。录音、转写和翻译只存在你设备上、放在它所属的
+<p>页面内容和课堂转写在我们这边从不落盘，只有一个例外：你同意的后台课件生成任务会按第 3 节所述暂存最多 7 天，
+你随时可以在课程里自己删掉。录音、转写和翻译只存在你设备上、放在它所属的
 那份文档里；删掉那条录音或那份文档就一起删了。与安装标识关联的额度记录在 12 个月内过期。
 用量记录（见第 3 节）保留约 90 天，之后自动从统计库里滚出去。
 这个安装标识存在 iOS 钥匙串里，也就是说它<strong>删掉 App 再重装依然存在</strong>——
@@ -360,7 +461,8 @@ will be published here before the change takes effect in the app.</p>
 
 <h2>9. 你的权利</h2>
 <p>因为我们没有账号、也没有个人标识符，通常没有属于你个人的数据可供导出或删除。
-如果你认为我们持有与你相关的数据，发邮件到
+唯一会短期保存你内容的是你同意过的后台生成任务（最多 7 天），你可以在 App 里自己删除（「停止任务并删除云端副本」）。
+如果你认为我们还持有其他与你相关的数据，发邮件到
 <a href="mailto:terrygao907@gmail.com">terrygao907@gmail.com</a>，我们会在 30 天内回复。
 视你所在地区，你可能享有 GDPR、英国 GDPR、CCPA 或澳大利亚隐私法下的权利。</p>
 
